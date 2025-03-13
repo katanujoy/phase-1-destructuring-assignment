@@ -1,6 +1,64 @@
+// Strings
+
 const farmAnimals = 'cow horse sheep pig chicken';
 
+// Destructure animals based on their sounds
+const [moo, neigh, baa, oink, cluck] = farmAnimals.split(' ');
+
+console.log(moo);   // Output: cow
+console.log(neigh); // Output: horse
+console.log(baa);   // Output: sheep
+console.log(oink);  // Output: pig
+console.log(cluck); // Output: chicken
+
+// Destructure without the horse, naming them appropriately
+const [bessie, , dolly, babe, little] = farmAnimals.split(' ');
+
+console.log(bessie); // Output: cow
+console.log(dolly);  // Output: sheep
+console.log(babe);   // Output: pig
+console.log(little); // Output: chicken
+
+// Destructure without the horse and chicken, using color variables
+const [blackAndWhite, , black, pink] = farmAnimals.split(' ');
+
+console.log(blackAndWhite); // Output: cow
+console.log(black);         // Output: sheep
+console.log(pink);          // Output: pig
+
+
+// Arrays
+
 const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+
+// Destructure colors using color names
+const [red, orange, yellow, green, blue, indigo, violet] = colors;
+
+console.log(red);    // Output: red
+console.log(orange); // Output: orange
+console.log(yellow); // Output: yellow
+console.log(green);  // Output: green
+console.log(blue);   // Output: blue
+console.log(indigo); // Output: indigo
+console.log(violet); // Output: violet
+
+// Destructure while leaving out indigo, using the first letter of each color
+const [r, o, y, g, b, , v] = colors;
+
+console.log(r); // Output: red
+console.log(o); // Output: orange
+console.log(y); // Output: yellow
+console.log(g); // Output: green
+console.log(b); // Output: blue
+console.log(v); // Output: violet
+
+// Assign only indigo using `indg`
+const [, , , , , indg] = colors;
+
+console.log(indg); // Output: indigo
+
+
+// Objects
 
 const muppet = {
   muppetName: 'Miss Piggy',
@@ -9,6 +67,16 @@ const muppet = {
   job: 'Cast member of The Muppet Show',
   partner: 'Kermit'
 };
+
+// Destructure all keys from the `muppet` object
+const { muppetName, color, song, job, partner } = muppet;
+
+console.log(muppetName); // Output: Miss Piggy
+console.log(color);      // Output: pink
+console.log(song);       // Output: Never Before, Never Again
+console.log(job);        // Output: Cast member of The Muppet Show
+console.log(partner);    // Output: Kermit
+
 
 const nestedMuppet = {
   nestedName: 'Kermit',
@@ -25,24 +93,16 @@ const nestedMuppet = {
   nestedPartner: 'Miss Piggy'
 };
 
-// Strings
+// Destructure songs 2 and 4, and Kermit's job and partner
+const { 
+  album: { 
+    theMuppetMovie: { song2, song4 } 
+  }, 
+  nestedJob, 
+  nestedPartner 
+} = nestedMuppet;
 
-// 1. Use destructuring to assign appropriate variables based on the sounds animals make.
-
-// 2. Bolt the horse wandered off, so just give us four animals, and let's name them bessie, dolly, babe, and little.
-
-// 3. Little the chicken had to go back to the coop, so now we're left with three. Let's use color variables of blackAndWhite, black, and pink.
-
-// Arrays
-
-// 4. Use destructuring to assign appropriate variables using the color names.
-
-// 5. Some people have a really hard time picking out indigo, so let's leave that one out, using the first letter of each color as the variable names.
-
-// 6. But wait! Indigo is now feeling *super* left out. Let's only assign indigo using indg. 
-
-// Objects
-
-// 7. Use destructuring to assign all variables using the keys as the variable names
-
-// 8. Use destructuring to assign songs 2 and 4, and Kermit's job and partner
+console.log(song2);        // Output: Moving Right Along
+console.log(song4);        // Output: I Hope That Something Better Comes Along
+console.log(nestedJob);    // Output: Host of The Muppet Show
+console.log(nestedPartner); // Output: Miss Piggy
